@@ -1,8 +1,4 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
 $start_time = microtime(true);
 register_shutdown_function('my_shutdown');
 function my_shutdown()
@@ -64,4 +60,4 @@ echo "Сообщение закодировано только ключом KEY:
 $code = $plugin->response($web);
 echo "Сообщение раскодировано:  $code <br>";
 
-echo $plugin->finish($code);
+echo $plugin->finish($code).'<br>';
