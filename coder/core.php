@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: newca
- * Date: 25.10.2017
- * Time: 01:23
- */
-
 namespace coder;
 
 
