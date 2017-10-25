@@ -1,4 +1,8 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 $start_time = microtime(true);
 register_shutdown_function('my_shutdown');
 function my_shutdown()
@@ -25,14 +29,17 @@ echo "Сообщение закодировано ключом KEY: $web <br>";
 /*
  * Перехват сообщения
  */
-// include 'coder/hacker.php';
+//include 'coder/hacker.php';
 
+// $hacker = new \coder\hacker();
 // Перебор числового ключа
-// echo hacker(true, $web, 100000).'<br>';
+// $key =  $hacker->load($web,100000 ,true);
+
+
 
 // Перебор символьного ключа
-// echo hacker(false, $web, 3).'<br>';
-
+// $key =  $hacker->load($web,3 ,false) .'<br>';
+// echo $key .'<br>';
 // exit;
 /*
  * Конец перехвата сообщения
