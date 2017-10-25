@@ -1,5 +1,11 @@
 <?php
 $start_time = microtime(true);
+register_shutdown_function('my_shutdown');
+function my_shutdown()
+{
+    global $start_time;
+    echo "Затраченное время: ".(microtime(true) - $start_time)." Секунд.";
+}
 
 include "coder/core.php";
 include "coder/plugin.php";
@@ -19,15 +25,15 @@ echo "Сообщение закодировано ключом KEY: $web <br>";
 /*
  * Перехват сообщения
  */
-include 'coder/hacker.php';
+// include 'coder/hacker.php';
 
 // Перебор числового ключа
-echo hacker(true, $web, 100000).'<br>';
+// echo hacker(true, $web, 100000).'<br>';
 
 // Перебор символьного ключа
 // echo hacker(false, $web, 3).'<br>';
-echo "Затраченное время: ".(microtime(true) - $start_time)." Секунд.";
-exit;
+
+// exit;
 /*
  * Конец перехвата сообщения
  */
@@ -55,5 +61,5 @@ echo $plugin->finish($code) ? 'Лицензия подтверждена' : 'О�
 
 echo '<br>';
 
-echo "Затраченное время: ".(microtime(true) - $start_time)." Секунд.";
+
 
