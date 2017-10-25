@@ -58,8 +58,3 @@ $code = $plugin->response($web);
 echo "Сообщение раскодировано:  $code <br>";
 
 echo $plugin->finish($code) ? 'Лицензия подтверждена' : 'Ошибка лицензии';
-
-echo '<br>';
-
-
-
