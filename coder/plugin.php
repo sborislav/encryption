@@ -26,7 +26,7 @@ class plugin extends core
     private function randGenerate(){
 
         $this->_x = random_int(1000000, 9999999);
-        $this->_key = random_int(10000, 99999);
+        $this->_key = random_int(1000000, 9999999);
         //$this->_key = $this->getRandString(7);
     }
 
@@ -60,22 +60,29 @@ class plugin extends core
     public function response($string){
 
         switch ($this->_process){
-            case 0: $this->_process++; return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
-            case 1: $this->_process++; return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
-            case 2: $this->_process++; return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
+            case 0:
+                $this->_process++;
+                if ( $string == $this->request() ) { echo $this->finish(); exit; }
+                return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
+            case 1:
+                $this->_process++;
+                return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
+            case 2:
+                $this->_process++;
+                return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
             default: return 0;
         }
     }
 
-    public function finish($code){
+    public function finish($code = null){
 
         if ( !empty($code) ){
             $code = $this->hex2str($code);
             if ( $code == $this->_x )
-                return true;
+                return 'Лицензия подтверждена';
             else
-                return false;
+                return 'Ошибка лицензии';
         } else
-            return false;
+            return 'Ошибка лицензии';
     }
 }
