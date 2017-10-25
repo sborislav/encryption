@@ -13,7 +13,7 @@ class plugin extends core
     /**
      * Запуск плагина
      */
-    public function __construct()
+    public  function __construct()
     {
         // при запуске плагина вызывается функция для создания случайных чисел
         $this->randGenerate();
@@ -27,7 +27,7 @@ class plugin extends core
 
         $this->_x = random_int(1000000, 9999999);
         $this->_key = random_int(1000000, 9999999);
-        //$this->_key = $this->getRandString(7);
+       // $this->_key = $this->getRandString(3);
     }
 
     /**
@@ -42,6 +42,8 @@ class plugin extends core
         else
             $this->_request = $this->_x;
 
+        echo "x: $this->_x <br>";
+        echo "key: $this->_key <br>";
     }
 
     /**
@@ -69,7 +71,7 @@ class plugin extends core
                 return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
             case 2:
                 $this->_process++;
-                return $this->tryCoder(  $string,  $this->str2hex($this->_key) );
+                return $this->hex2str($this->tryCoder(  $string,  $this->str2hex($this->_key) ) );
             default: return 0;
         }
     }
@@ -77,7 +79,7 @@ class plugin extends core
     public function finish($code = null){
 
         if ( !empty($code) ){
-            $code = $this->hex2str($code);
+
             if ( $code == $this->_x )
                 return 'Лицензия подтверждена';
             else
