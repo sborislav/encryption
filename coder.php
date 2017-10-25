@@ -57,4 +57,4 @@ echo "Сообщение закодировано только ключом KEY:
 $code = $plugin->response($web);
 echo "Сообщение раскодировано:  $code <br>";
 
-echo $plugin->finish($code) ? 'Лицензия подтверждена' : 'Ошибка лицензии';
+echo $plugin->finish($code);
