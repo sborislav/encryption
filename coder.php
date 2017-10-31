@@ -23,6 +23,24 @@ echo "Данные передаются по открытому каналу \"w
 echo "Сообщение закодировано ключом KEY: $web <br>";
 
 /*
+ * Перепор по фразе
+ */
+/*
+$core = new \coder\core();
+$wewe = strlen($web);
+$input = '124.65.87.12';
+$j = strlen($web);
+for ( $i=0; $i<strlen($web)-strlen($input); $i++ ){
+    $ii = str_pad($input, $j-(strlen($web)-strlen($input)), "0", STR_PAD_LEFT);
+    $ii = str_pad($ii,  $j-(($j-(strlen($web)-strlen($input)))), "0");
+    echo $ii . ' ';
+
+    echo $core->hex2str($core->tryCoder($web, $core->str2hex($ii))).'<br>';
+    $j++;
+}
+*/
+
+/*
  * Перехват сообщения
  */
 //include 'coder/hacker.php';
