@@ -1,7 +1,6 @@
 <?php
 namespace coder;
 
-
 class core
 {
 
@@ -13,7 +12,11 @@ class core
      * @return string
      */
     public function tryCoder( $mes , $key ){
-        $mr = $this->hex2bin($mes);
+
+       // $mr = $this->change($this->hex2bin($mes));
+
+       $mr = $this->hex2bin($mes);
+
         $mk = $this->hex2bin($key);
 
         if ( strlen($mr) > strlen($mk)  ){
@@ -35,8 +38,20 @@ class core
             $bin .= ( $mr[$i] xor $mk[$i] ) ? '1' : '0';
 
 
+        //return $this->change($this->bin2hex($bin));
         return $this->bin2hex($bin);
     }
+
+
+    public function change($bin){
+        for ($i=0;$i<strlen($bin);$i+=2){
+            $temp = $bin[$i];
+            $bin[$i] = $bin[$i+1];
+            $bin[$i+1] = $temp;
+        }
+        return $bin;
+    }
+
 
     /**
      * Генератор случайнох символов
