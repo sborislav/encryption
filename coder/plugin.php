@@ -19,15 +19,15 @@ class plugin extends core
         $this->randGenerate();
     }
 
-
     /**
      * Генерация случайных чисел
      */
     private function randGenerate(){
 
         $this->_x = random_int(1000000, 9999999);
-        $this->_key = random_int(1000000, 9999999);
-       // $this->_key = $this->getRandString(3);
+      ///  $this->_key = random_int(100000, 999999);
+        $this->_key = $this->getRandString(4);
+       // $this->_key = 'ilec27sw';
     }
 
     /**
@@ -53,6 +53,7 @@ class plugin extends core
     public function request(){
         return $this->tryCoder( $this->str2hex($this->_request),  $this->str2hex($this->_key) );
     }
+
 
     /**
      * Ответ
