@@ -5,7 +5,8 @@ namespace coder;
 class hacker extends core
 {
 
-    private $pattern = '/windows/';
+    public $i = 0;
+    private $pattern = '/124\.65\.87\.12/';
     private $web;
 
     /**
@@ -20,7 +21,11 @@ class hacker extends core
         $chars = "1234567890qwertyuiopasdfghjklzxcvbnm";
 
         if ( $ln == strlen($pat) ){
+            $this->i+=1;
+
             $e = $this->hex2str($this->tryCoder($this->web, $this->str2hex($pat)));
+
+
             if (preg_match($this->pattern, $e) === 1)
                 return $pat;
             return '';
